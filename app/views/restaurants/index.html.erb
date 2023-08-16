@@ -1,0 +1,14 @@
+<h1>Restaurants</h1>
+<div>
+  <%@restaurants.each do |restaurant|%>
+  <p>
+  <%=restaurant.name%>
+  </p>
+  <%end%>
+
+</div>
+
+<%link_to "New Restaurant", new_restaurant_path%>
+ <%= link_to "Back to restaurants", restaurants_path %>
+  <% button_to "Destroy this restaurant", @restaurant, method: :delete %>
+  <%= link_to "Edit this restaurant", edit_restaurant_path (@restaurant) %>
