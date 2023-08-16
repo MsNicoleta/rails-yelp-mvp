@@ -1,15 +1,36 @@
 <div class="container">
+  <!-- Outer container to structure the content within a designated area. -->
+
   <div class="row">
+    <!-- A row within the container, which may contain columns for content alignment. -->
+
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <!-- A column layout using responsive classes for different screen sizes. -->
+      <!-- This column spans the entire width on extra-small screens and takes up 10 out of 12 columns on small screens, with a 1-column offset. -->
+
       <h1>All restaurants</h1>
+      <!-- A heading indicating the purpose of the section: displaying all restaurants. -->
+
       <ul class="list-group mb-3">
+        <!-- An unordered list with the 'list-group' class for styling. -->
+
         <% @restaurants.each do |restaurant| %>
+        <!-- Loop through each restaurant in the '@restaurants' instance variable. -->
+
           <li class="list-group-item">
+            <!-- List item with the 'list-group-item' class. -->
+
             <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            <!-- Display a link with the restaurant's name, linking to the show page of the restaurant. -->
+
           </li>
         <% end %>
+        <!-- End of the loop. -->
       </ul>
+
       <%= link_to "Add a new Restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+      <!-- Create a link to the 'new_restaurant' path (new restaurant creation page) with a button styling. -->
+
     </div>
   </div>
 </div>

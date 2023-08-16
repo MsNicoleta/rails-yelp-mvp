@@ -1,8 +1,19 @@
 <div class="container">
+  <!-- Outer container to structure the content within a designated area. -->
+
   <div class="row">
+    <!-- A row within the container, which may contain columns for content alignment. -->
+
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <!-- A column layout using responsive classes for different screen sizes. -->
+      <!-- This column spans the entire width on extra-small screens and takes up 10 out of 12 columns on small screens, with a 1-column offset. -->
+
       <h1><%= @restaurant.name %></h1>
+      <!-- Display the name of the restaurant in a heading element. -->
+
       <table class="table table-bordered">
+        <!-- Create a table with a bordered style. -->
+
         <tbody>
           <tr>
             <th scope="row">Address</th>
@@ -18,32 +29,66 @@
           </tr>
         </tbody>
       </table>
+      <!-- Display restaurant details in a table format. -->
 
       <div class="list-group">
+        <!-- Create a list group for displaying reviews. -->
+
         <% @restaurant.reviews.each do |review| %>
+        <!-- Loop through each review associated with the restaurant. -->
+
           <li class="list-group-item">
+            <!-- List item with the 'list-group-item' class. -->
+
             <small>
               <% count = 0 %>
+              <!-- Initialize a count variable. -->
+
               <% 5.times do %>
+              <!-- Loop five times to display star icons based on review rating. -->
+
                 <% if review.rating > count %>
+                  <!-- Check if the current iteration is within the rating range. -->
                   <i class="fa-solid fa-star"></i>
+                  <!-- Display a solid star icon. -->
                 <% else %>
                   <i class="fa-regular fa-star"></i>
+                  <!-- Display an outline star icon. -->
                 <% end %>
+
                 <% count += 1 %>
+                <!-- Increment the count variable. -->
+
               <% end %>
             </small>
+
             <p><%= review.content %></p>
+            <!-- Display the review's content. -->
+
           </li>
         <% end %>
+        <!-- End of the loop. -->
       </div>
+      <!-- Display reviews in a list group. -->
 
       <%= simple_form_for [@restaurant, @review] do |f| %>
+      <!-- Create a form for adding a new review for the restaurant. -->
+
         <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :content%>
+        <!-- Create an input field for the review's rating. -->
+
+        <%= f.input :content %>
+        <!-- Create an input field for the review's content. -->
+
         <%= f.submit class: 'btn btn-primary' %>
+        <!-- Create a submit button for the form with button styling. -->
+
       <% end %>
+      <!-- End of the form block. -->
+
       <%= link_to "See all restaurants", restaurants_path %>
+      <!-- Create a link to see all restaurants. -->
+
     </div>
   </div>
 </div>
