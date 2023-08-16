@@ -1,14 +1,39 @@
 <div class="container">
+  <!-- Outer container to structure the content within a designated area. -->
+
   <div class="row">
+    <!-- A row within the container, which may contain columns for content alignment. -->
+
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <!-- A column layout using responsive classes for different screen sizes. -->
+      <!-- This column spans the entire width on extra-small screens and takes up 10 out of 12 columns on small screens, with a 1-column offset. -->
+
       <h1>Create a new restaurant</h1>
+      <!-- A heading indicating the purpose of the section: creating a new restaurant. -->
+
       <%= simple_form_for @restaurant do |f| %>
+      <!-- Using the 'simple_form_for' helper to create a form for the 'Restaurant' model. -->
+      <!-- '@restaurant' is the instance variable containing the new restaurant object. -->
+      <!-- 'f' is a form builder object used to generate form fields. -->
+
         <%= f.input :name %>
+        <!-- Create an input field for the restaurant's name. -->
+
         <%= f.input :address %>
+        <!-- Create an input field for the restaurant's address. -->
+
         <%= f.input :phone_number %>
-        <%= f.input :category, collection: Restaurant::CATEGORIES%>
+        <!-- Create an input field for the restaurant's phone number. -->
+
+        <%= f.input :category, collection: Restaurant::CATEGORIES %>
+        <!-- Create a dropdown input field for selecting the restaurant's category. -->
+        <!-- 'collection: Restaurant::CATEGORIES' specifies the options for the dropdown based on the predefined 'CATEGORIES' constant in the 'Restaurant' model. -->
+
         <%= f.submit class: 'btn btn-primary' %>
+        <!-- Create a submit button for the form with the specified CSS classes for styling. -->
+
       <% end %>
+      <!-- End of the form block. -->
     </div>
   </div>
 </div>
