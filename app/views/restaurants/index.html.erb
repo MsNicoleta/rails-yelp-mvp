@@ -1,14 +1,15 @@
-<h1>Restaurants</h1>
-<div>
-  <%@restaurants.each do |restaurant|%>
-  <p>
-  <%=restaurant.name%>
-  </p>
-  <%end%>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>All restaurants</h1>
+      <ul class="list-group mb-3">
+        <% @restaurants.each do |restaurant| %>
+          <li class="list-group-item">
+            <%= link_to restaurant.name, restaurant_path(restaurant) %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "Add a new Restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>
-
-<%link_to "New Restaurant", new_restaurant_path%>
- <%= link_to "Back to restaurants", restaurants_path %>
-  <% button_to "Destroy this restaurant", @restaurant, method: :delete %>
-  <%= link_to "Edit this restaurant", edit_restaurant_path (@restaurant) %>
